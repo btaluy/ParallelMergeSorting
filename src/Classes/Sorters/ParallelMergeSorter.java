@@ -7,9 +7,9 @@ import java.util.concurrent.RecursiveAction;
 
 /** Code can be found here: http://www.cs.armstrong.edu/liang/intro9e/html/ParallelMergeSort.html? **/
 public class ParallelMergeSorter {
-  public static void parallelMergeSort(Transaction[] list) {
+  public static void parallelMergeSort(Transaction[] list, Integer threads) {
     RecursiveAction mainTask = new ParallelMergeSorter.SortTask(list);
-    ForkJoinPool pool = new ForkJoinPool();
+    ForkJoinPool pool = new ForkJoinPool(threads);
     pool.invoke(mainTask);
   }
 
